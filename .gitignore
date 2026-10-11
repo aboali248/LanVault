@@ -9,7 +9,7 @@ coverage/
 .env.*
 !.env.example
 data/
-backups/
+/backups/
 lanvault-*.log
 
 # .NET
