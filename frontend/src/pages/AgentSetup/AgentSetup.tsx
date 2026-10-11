@@ -35,7 +35,7 @@ export function AgentSetup() {
   return <main className="min-h-screen bg-[#09090b] px-4 py-6 text-slate-100 sm:px-8">
     <header className="mx-auto flex max-w-4xl items-center justify-between border-b border-slate-800 pb-5">
       <div className="flex items-center gap-3">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-orange-500 text-black"><Icon name="shield" /></span>
+        <img src="/logo1.png" alt="LanVault" className="h-10 w-10 rounded-xl object-contain" />
         <div><strong className="block">LanVault</strong><span className="text-xs text-slate-500">{isArabic ? 'إعداد الجهاز' : 'Device setup'}</span></div>
       </div>
       <div className="flex items-center gap-2">

@@ -131,7 +131,7 @@ export function AppShell({ children, route }: { children: React.ReactNode; route
     {open && <button type="button" onClick={() => setOpen(false)} className="fixed inset-0 z-30 bg-slate-950/40 lg:hidden" aria-label={t('close')} />}
     <aside className={`fixed inset-y-0 z-40 flex w-[17.5rem] flex-col border-l border-slate-200/80 bg-white px-4 py-5 shadow-float transition-transform dark:border-slate-800 dark:bg-slate-950 lg:translate-x-0 ${open ? 'translate-x-0' : language === 'en' ? '-translate-x-full' : 'translate-x-full'} ${language === 'en' ? 'right-auto left-0 border-r border-l-0' : 'right-0'}`}>
       <div className="mb-9 flex items-center gap-3 px-2">
-        <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 text-white shadow-lg shadow-orange-600/20"><Icon name="shield" size={22} /></span>
+        <img src="/logo1.png" alt="LanVault" className="h-10 w-10 rounded-2xl object-contain shadow-lg shadow-orange-600/20" />
         <div><strong className="block text-lg tracking-tight">LanVault</strong><span className="text-xs text-slate-500 dark:text-slate-400">LAN backup control</span></div>
       </div>
       <nav className="space-y-1.5" aria-label="Primary navigation">

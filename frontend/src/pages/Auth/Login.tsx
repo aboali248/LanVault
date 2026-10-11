@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Button } from '../../components/Button';
-import { Icon } from '../../components/Icon';
 import { Select } from '../../components/Select';
 import { useApp } from '../../contexts/AppContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -33,7 +32,7 @@ export function Login() {
     <button type="button" onClick={() => setLanguage(isArabic ? 'en' : 'ar')} className="absolute right-5 top-5 rounded-xl border border-slate-800 px-3 py-2 text-xs font-bold text-slate-300 hover:border-orange-500/50">{isArabic ? 'EN' : 'ع'}</button>
     <section className="relative w-full max-w-md rounded-[2rem] border border-slate-800 bg-[#111113] p-7 shadow-2xl shadow-black/50 sm:p-9">
       <div className="mb-8 flex items-center gap-3">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-orange-500 text-black"><Icon name="shield" size={26} /></span>
+        <img src="/logo1.png" alt="LanVault" className="h-12 w-12 rounded-2xl object-contain" />
         <div><p className="text-xl font-black tracking-tight">LanVault</p><p className="text-xs text-slate-500">{isArabic ? 'إدارة النسخ الاحتياطي عبر الشبكة' : 'LAN backup management'}</p></div>
       </div>
       <h1 className="text-2xl font-bold">{isArabic ? 'تسجيل الدخول' : 'Sign in'}</h1>
