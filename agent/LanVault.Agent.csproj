@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Version>1.1.3</Version>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <RootNamespace>LanVault.Agent</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Needed only for the Windows Service lifetime; no credentials are embedded. -->
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
+  </ItemGroup>
+
+  <Target Name="WriteAgentReleaseManifest" AfterTargets="Publish">
+    <ItemGroup>
+      <AgentExecutable Include="$(PublishDir)LanVault.Agent.exe" />
+    </ItemGroup>
+    <GetFileHash Files="@(AgentExecutable)" Algorithm="SHA256">
+      <Output TaskParameter="Items" ItemName="AgentExecutableWithHash" />
+    </GetFileHash>
+    <WriteLinesToFile
+      File="$(PublishDir)LanVault.Agent.manifest"
+      Lines="@(AgentExecutableWithHash->'$(InformationalVersion)|%(FileHash)')"
+      Overwrite="true" />
+  </Target>
+</Project>

@@ -1,0 +1,39 @@
+{
+  "name": "lanvault-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LanVault LAN backup management API",
+  "main": "dist/server.js",
+  "scripts": {
+    "predev": "npm run publish-agent",
+    "dev": "tsx watch src/server.ts",
+    "prestart": "npm run publish-agent",
+    "start": "node --title=LanVault dist/server.js",
+    "prebuild": "npm run publish-agent",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "publish-agent": "dotnet publish ../agent/LanVault.Agent.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o .runtime/agent"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "archiver-zip-encrypted": "^2.0.0",
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ws": "^8.18.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "@types/ws": "^8.5.13",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

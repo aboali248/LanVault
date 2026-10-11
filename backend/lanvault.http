@@ -1,0 +1,78 @@
+@baseUrl = http://localhost:3031/api/v1
+@groupId = 00000000-0000-4000-8000-000000000001
+@deviceId = 00000000-0000-4000-8000-000000000002
+@backupId = 00000000-0000-4000-8000-000000000003
+
+### Health
+GET http://localhost:3031/health
+
+### Dashboard
+GET {{baseUrl}}/dashboard
+
+### List devices
+GET {{baseUrl}}/devices?page=1&pageSize=20
+
+### Create a pending device (not seeded into the database)
+POST {{baseUrl}}/devices
+Content-Type: application/json
+
+{
+  "computerName": "REPLACE-WITH-ACTUAL-COMPUTER",
+  "disks": []
+}
+
+### Approve an enrolled device
+POST {{baseUrl}}/devices/{{deviceId}}/approve
+
+### Select disks explicitly using IDs returned by GET /devices/{id}
+PUT {{baseUrl}}/devices/{{deviceId}}/disks
+Content-Type: application/json
+
+{
+  "disks": [
+    { "id": "REPLACE-WITH-RETURNED-DISK-UUID", "isSelected": true }
+  ]
+}
+
+### List backup jobs
+GET {{baseUrl}}/backups?page=1&pageSize=20
+
+### Queue a full backup (requires an approved device, selected disks and destination)
+POST {{baseUrl}}/backups
+Content-Type: application/json
+
+{
+  "deviceId": "{{deviceId}}",
+  "mode": "full"
+}
+
+### Request backup cancellation
+POST {{baseUrl}}/backups/{{backupId}}/stop
+
+### Create a department
+POST {{baseUrl}}/groups
+Content-Type: application/json
+
+{
+  "name": "IT",
+  "description": "Replace with an actual department"
+}
+
+### List departments
+GET {{baseUrl}}/groups?page=1&pageSize=20
+
+### Read or update system settings
+GET {{baseUrl}}/settings
+
+### Agent enrollment (set a real bootstrap token in the client)
+POST {{baseUrl}}/agents/register
+Content-Type: application/json
+
+{
+  "agentToken": "REPLACE-WITH-AGENT_BOOTSTRAP_TOKEN",
+  "computerName": "REPLACE-WITH-ACTUAL-COMPUTER",
+  "windowsUsername": "REPLACE-WITH-ACTUAL-USERNAME",
+  "operatingSystem": "REPLACE-WITH-ACTUAL-WINDOWS-VERSION",
+  "agentVersion": "1.0.0",
+  "disks": []
+}

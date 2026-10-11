@@ -1,0 +1,28 @@
+# Node.js
+node_modules/
+dist/
+coverage/
+*.log
+
+# Local configuration and persisted runtime data
+.env
+.env.*
+!.env.example
+data/
+backups/
+lanvault-*.log
+
+# .NET
+**/bin/
+**/obj/
+/backend/.runtime/
+
+# Temp launcher
+backend/launcher.tmp.cjs
+
+# IDE / OS
+.vs/
+.vscode/
+*.user
+Thumbs.db
+Desktop.ini
